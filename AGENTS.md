@@ -12,7 +12,7 @@ You can browse and install extra skills here:
   blackbox test files (ending in `_test.mbt`) and whitebox test files (ending in
   `_wbtest.mbt`).
 
-- In the toplevel directory, there is a `moon.mod.json` file listing module
+- In the toplevel directory, there is a `moon.mod` file listing module
   metadata.
 
 ## Coding convention
@@ -45,7 +45,9 @@ You can browse and install extra skills here:
   changes affect outputs, run `moon test --update` to refresh snapshots.
 
 - Prefer `assert_eq` or `assert_true(pattern is Pattern(...))` for results that
-  are stable or very unlikely to change. Use snapshot tests to record current
-  behavior. For solid, well-defined results (e.g. scientific computations),
-  prefer assertion tests. You can use `moon coverage analyze > uncovered.log` to
-  see which parts of your code are not covered by tests.
+  are stable or very unlikely to change. For snapshot tests that record
+  structured debugging output, derive `Debug` and use `debug_inspect`, rather
+  than deriving `Show` for debugging. For solid, well-defined results (e.g.
+  scientific computations), prefer assertion tests. You can use
+  `moon coverage analyze > uncovered.log` to see which parts of your code are
+  not covered by tests.
